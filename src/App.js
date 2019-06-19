@@ -1,26 +1,92 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import axios from 'axios'
+import TicketTable from './tickets/Table'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import TicketForm from './tickets/TicketForm'
+import SearchForm from './tickets/Search'
+
+import Charts from './tickets/charts'
+import Graphbar from './tickets/graphbar'
+
+
+
+class App extends React.Component{
+    constructor(){
+        super()
+        this.state = {
+            tickets: [],
+            originalTickets:[]
+        }
+        this.handlePriorityClick = this.handlePriorityClick.bind(this)
+        this.handleSearch = this.handleSearch.bind(this)
+        this.handleTicketSubmission = this.handleTicketSubmission.bind(this)
+    }
+
+    componentDidMount(){
+        axios.get('http://dct-api-data.herokuapp.com/tickets?api_key=6210d965fc0b939a')
+        .then(response => { //the response obtained is an object so you should use arrow function
+            console.log(response.data)
+            this.setState(() => ({
+                tickets: response.data,
+                originalTickets: response.data
+            }))
+        })
+    }
+
+    handleTicketSubmission(ticket){
+        //console.log('app',ticket)
+        this.setState((prevState) => ({
+            tickets: prevState.tickets.concat(ticket),
+            originalTickets: prevState.originalTickets.concat(ticket)
+        }))
+
+
+    }
+
+    handleSearch(value){
+       // console.log('app', value)
+       this.setState((prevState) => ({
+           tickets: prevState.originalTickets.filter(ticket => ticket.ticket_code.includes(value))
+       }))
+    }
+
+    handlePriorityClick(value){
+        if(value == 'all'){
+            this.setState((prevState) => ({
+                tickets:[].concat(prevState.originalTickets)
+            }))
+        }
+        else
+        {
+            this.setState(prevState => ({
+                tickets: prevState.originalTickets.filter(ticket => ticket.priority === value)
+            }))
+        }
+        
+
+    }
+
+
+    render(){
+        return(
+            <div>
+                <h1>Ticket Master</h1>
+                <h2>Listing Tickets-{this.state.tickets.length}</h2>
+                <SearchForm handleSearch={this.handleSearch} handlePriorityClick={this.handlePriorityClick}/>
+
+                <TicketTable tickets={this.state.tickets}/>
+                <TicketForm handleTicketSubmission={this.handleTicketSubmission}/>
+
+                 <Charts piHandle={this.state.tickets}/>
+                <Graphbar graghBar={this.state.tickets}/>
+                
+            </div>
+        )
+    }
 }
+export default App
 
-export default App;
+
+
+
+
