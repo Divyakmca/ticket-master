@@ -25,7 +25,7 @@ class App extends React.Component{
     componentDidMount(){
         axios.get('http://dct-api-data.herokuapp.com/tickets?api_key=6210d965fc0b939a')
         .then(response => { //the response obtained is an object so you should use arrow function
-            console.log(response.data)
+            console.log("index", response.data)
             this.setState(() => ({
                 tickets: response.data,
                 originalTickets: response.data
