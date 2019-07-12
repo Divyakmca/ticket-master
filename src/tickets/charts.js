@@ -33,7 +33,7 @@ class Charts extends React.Component{
                  
                 ]}
                 options={{
-                    title: 'ticket priority',
+                    title: 'Ticket Priority',
                 }}
                 rootProps={{ 'data-testid': '1' }}
                 />

@@ -69,17 +69,28 @@ class App extends React.Component{
 
     render(){
         return(
-            <div>
+            <div className="container">
+                <div className="d-flex justify-content-center">
                 <h1>Ticket Master</h1>
+                </div>
+
                 <h2>Listing Tickets-{this.state.tickets.length}</h2>
+
+                <div className="row">
+                <div className="col-md-8">
                 <SearchForm handleSearch={this.handleSearch} handlePriorityClick={this.handlePriorityClick}/>
 
                 <TicketTable tickets={this.state.tickets}/>
+                </div>
+                
+                <div className="col-md-4">
                 <TicketForm handleTicketSubmission={this.handleTicketSubmission}/>
+                </div>
 
-                 <Charts piHandle={this.state.tickets}/>
+                <Charts piHandle={this.state.tickets}/>
                 <Graphbar graghBar={this.state.tickets}/>
                 
+                </div>
             </div>
         )
     }

@@ -97,21 +97,20 @@ class TicketForm extends React.Component{
     render(){
        // console.log(this.state)
         return(
-            <div>
+            <div className="form-group">
                 <form onSubmit={this.handleSubmit}>
-                    <fieldset>
-                        {/* <legend>{this.printMessage()}</legend> */}
-                        <legend>Add Tickets</legend>
+                    <fieldset className="p-3 mb-2 bg-secondary text-white">
+                       <legend>Add Tickets</legend>
                         <label>
                             Name:
-                            <input type="text" value={this.state.name} onChange={this.handleNameChange}/>
+                            <input type="text" class="form-control" value={this.state.name} onChange={this.handleNameChange}/>
 
                             {this.state.errors.name && <span>{this.state.errors.name.join(', ')}</span>}
                         </label><br/>
 
                         <label>
                           Department
-                          <select value={this.state.department} onChange={this.handleDepartmentChange}>
+                          <select value={this.state.department} class="form-control" onChange={this.handleDepartmentChange}>
                               <option value="">select</option>
                               {this.state.departmentOptions.map((dept) => {
                                   return <option key={dept.id}>{dept.name.toUpperCase()}</option>
@@ -124,7 +123,7 @@ class TicketForm extends React.Component{
 
                         <label>
                             Priority
-                            <select value={this.state.priority} onChange={this.handlePriorityChange.bind(this)}>
+                            <select value={this.state.priority} class="form-control" onChange={this.handlePriorityChange.bind(this)}>
                             <option value="">select</option>
                             <option value="low">low</option>
                             <option value="high">high</option>
@@ -136,7 +135,7 @@ class TicketForm extends React.Component{
 
                         <label>
                             Message
-                            <textarea value={this.state.message} onChange={(e) => {
+                            <textarea value={this.state.message} class="form-control" onChange={(e) => {
                                 const message = e.target.value
                                 this.setState(() => ({message}))
 
@@ -144,8 +143,8 @@ class TicketForm extends React.Component{
                             </textarea>    
                             {this.state.errors.message && <span>{this.state.errors.message.join(', ')}</span>}
                         </label><br/>
-                        <input type="submit"/>
-                        <button onClick={this.handleReset}>reset</button>
+                        <input class="btn btn-primary mr-1" type="submit"/>
+                        <button class="btn btn-primary " onClick={this.handleReset}>reset</button>
 
                     </fieldset>    
                 </form>

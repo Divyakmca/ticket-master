@@ -14,16 +14,10 @@ import App from './App'
 const Hello = (props) =>{
     return(
         <div>
-           {/* <h1>Ajax calls</h1> */}
+         
             
             
             <App />
-
-            {/* {<Users1 />}
-
-            {<UserShow />} */}
-
-            {/* <Conversion /> */}
             
 
             

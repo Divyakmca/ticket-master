@@ -24,18 +24,18 @@ class SearchForm extends React.Component{
             <div>
                 <input type="text" value={this.state.search} onChange={this.handleSearchChange} placeholder="search by code"/>
                 
-                <button onClick={() => {
+                <button class="btn btn-primary mr-1" onClick={() => {
                     this.props.handlePriorityClick('all')
                 }}>All</button>
 
-                <button onClick={() => {
+                <button class="btn btn-success mr-1" onClick={() => {
                     this.props.handlePriorityClick('high')
                 }}>High</button>
 
-                <button onClick={() => {
+                <button class="btn btn-warning mr-1" onClick={() => {
                     this.props.handlePriorityClick('medium')}}>Medium</button>
 
-                <button onClick={() => {
+                <button class="btn btn-danger mr-1" onClick={() => {
                     this.props.handlePriorityClick('low')}}>Low</button>
             </div>
         )

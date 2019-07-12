@@ -27,7 +27,7 @@ class GraghBar extends React.Component{
                     chartType="Bar"
                     loader={<div>Loading Chart</div>}
                     data={[
-                        ['department', 'no-of-department'],
+                        ['department', 'no-of-departments'],
                         ['TECHNICAL',technical] ,
                         ['MANAGER',manager],
                         ['HR', hr],
@@ -37,8 +37,8 @@ class GraghBar extends React.Component{
                     options={{
                         // Material design options
                         chart: {
-                        title: 'Ticket by department',
-                        subtitle: 'Sales, Expenses, and Profit: 2014-2017',
+                        title: 'Tickets by department',
+                    
                         },
                     }}
                     // For tests

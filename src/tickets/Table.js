@@ -3,15 +3,15 @@ import TicketRow from './Row'
 
 const TicketTable = (props) => {
     return(
-        <table border="1">
-            <thead>
+        <table border="1" className="table table-striped">
+            <thead className="thead-dark">
                 <tr>
-                    <th> Code </th>
-                    <th> Name </th>
-                    <th> Department </th>
-                    <th> Priority </th>
-                    <th> Message </th>
-                    <th> Status </th>
+                    <th scope="col"> Code </th>
+                    <th scope="col"> Name </th>
+                    <th scope="col"> Department </th>
+                    <th scope="col"> Priority </th>
+                    <th scope="col"> Message </th>
+                    <th scope="col"> Status </th>
                 </tr>
             </thead>
             <tbody>

@@ -4,6 +4,7 @@ class TicketRow extends React.Component{
     render(){
         return(
             <tr>
+              
                 <td>{this.props.ticket.ticket_code}</td>
                 <td>{this.props.ticket.name}</td>
                 <td>{this.props.ticket.department}</td>
